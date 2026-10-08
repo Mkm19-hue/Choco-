@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Micro-interactions: tactile scale & spring bounce */
+@keyframes scale-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.92);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  80% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float-badge-up {
+  0% {
+    transform: translateY(0) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(-4px) scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-14px) scale(1.02);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(-22px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes cart-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05) translateY(-2px);
+  }
+  60% {
+    transform: scale(0.98) translateY(1px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes flash-warm {
+  0% {
+    background-color: #F8ECD8;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.scale-bounce,
+.animate-scale-bounce {
+  animation: scale-bounce 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@utility scale-bounce {
+  animation: scale-bounce 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-badge-pop {
+  animation: badge-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-float-badge-up {
+  animation: float-badge-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-cart-bounce {
+  animation: cart-bounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-flash-warm {
+  animation: flash-warm 0.5s ease-out;
+}
+
+/* Page & Tab Transitions: Subtle luxury fade-in with micro-translation */
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-subtle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-page-fade-in {
+  animation: page-fade-in 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+.animate-fade-in-subtle {
+  animation: fade-in-subtle 0.2s ease-out both;
+}
+
+/* Skeleton Loading en Ivoire & Crème (Thème Chocolat d'Exception) */
+@keyframes shimmer-ivory {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-ivory {
+  background: linear-gradient(
+    90deg,
+    #F3ECE3 0%,
+    #F8F4EC 25%,
+    #FFFDF9 50%,
+    #F8F4EC 75%,
+    #F3ECE3 100%
+  );
+  background-size: 250% 100%;
+  animation: shimmer-ivory 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.skeleton-ivory-darker {
+  background: linear-gradient(
+    90deg,
+    #ECE4D8 0%,
+    #F4EDE3 25%,
+    #FBF7F0 50%,
+    #F4EDE3 75%,
+    #ECE4D8 100%
+  );
+  background-size: 250% 100%;
+  animation: shimmer-ivory 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-fade-in,
+  .animate-fade-in-subtle,
+  .animate-scale-bounce,
+  .animate-badge-pop,
+  .animate-float-badge-up,
+  .animate-cart-bounce {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Light luxury scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF7EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5DACF;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B09E;
+}
+
+/* Thermal receipt printable styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt-print-area, #thermal-receipt-print-area * {
+    visibility: visible;
+  }
+  #thermal-receipt-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    margin: 0;
+    padding: 10px;
+    background: white !important;
+    color: black !important;
+  }
+}

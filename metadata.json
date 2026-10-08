@@ -1,0 +1,6 @@
+{
+  "name": "Chocolaterie Cacao & Or - Caisse & Stocks",
+  "description": "Application PWA moderne et élégante de gestion de caisse tactile et de stocks en temps réel pour artisan chocolatier.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

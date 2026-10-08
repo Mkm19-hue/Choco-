@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <script>
+      (function() {
+        try {
+          var _origFetch = window.fetch;
+          var _fn = function() {
+            return _origFetch ? _origFetch.apply(window, arguments) : undefined;
+          };
+          var desc = {
+            get: function() { return _fn; },
+            set: function(v) { _fn = v; },
+            configurable: true,
+            enumerable: true
+          };
+          try {
+            Object.defineProperty(window, 'fetch', desc);
+          } catch (_) {}
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              Object.defineProperty(Window.prototype, 'fetch', desc);
+            }
+          } catch (_) {}
+        } catch (_) {}
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Gourmandise Chocolat — Caisse & Boutique (Madagascar 🇲🇬)</title>
+    <meta name="description" content="Application de caisse tactile et boutique premium en ligne pour Gourmandise Chocolat à Madagascar. Prix en Ariary (MGA), livraison par zones et retrait." />
+    <meta property="og:title" content="Gourmandise Chocolat — Caisse & Boutique (Madagascar 🇲🇬)" />
+    <meta property="og:description" content="Application de caisse tactile et boutique premium en ligne pour Gourmandise Chocolat à Madagascar. Prix en Ariary (MGA), livraison par zones et retrait." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#FBF7EF" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Gourmandise" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FBF7EF] text-[#241811] font-sans antialiased selection:bg-[#E6B352] selection:text-[#1F100A]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
